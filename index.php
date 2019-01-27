@@ -5,7 +5,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$DB = @new mysqli('localhost', 'root', 'root', 'code-for-australia');
+$DB = @new mysqli('localhost', 'root', 'root', 'code_for_australia');
 
 if ($DB->connect_error) {
     echo "Error: " . $DB->connect_error;
@@ -112,12 +112,11 @@ $oldestAge   = 0;
 <div class="center p2">
   <div class="max-width-3 mx-auto left-align">
     <h1>Fellowship Register</h1>
-    <hr/>
       <?php
       
       foreach ($fellowsGrouped as $fellowship => $fellows) {
           $average = array_sum(array_column($fellows, 'age')) / count($fellows);
-          echo '<div class="flex flex-wrap">
+          echo '<hr/><div class="flex flex-wrap">
             <p class="col-6">Fellowship category name: <strong>' . $fellowship . '</strong></p>
             <p class="col-6 right-align">Average fellow age for this category: <strong>' . $average . '</strong></p>
           </div>';
@@ -141,7 +140,7 @@ $oldestAge   = 0;
               }
               echo "</div></div>";
           }
-          echo "</div><hr/>";
+          echo "</div>";
       }
       
       echo '
@@ -205,5 +204,3 @@ $oldestAge   = 0;
   
 $result->close();
 $DB->close();
-
-?>
